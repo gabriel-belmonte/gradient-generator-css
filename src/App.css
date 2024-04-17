@@ -42,8 +42,3 @@
   align-items: center;
   justify-content: space-around;
 }
-
-.slider {
-  display: flex;
-  gap: 1vw;
-}

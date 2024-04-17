@@ -8,6 +8,7 @@ import {
 } from "./utils";
 import type { ResolutionType } from "./types";
 import "./App.css";
+import Slider from "./components/Slider.tsx";
 
 function App() {
   const [input, setInput] = useState(DEFAULT_GRADIENT);
@@ -51,18 +52,7 @@ function App() {
       <div className='buttons'>
         <button onClick={() => handleClick("1080p")}>DOWNLOAD 1080p</button>
         <button onClick={() => handleClick("720p")}>DOWNLOAD 720p</button>
-        <div className='slider'>
-          <input
-            type='range'
-            id='quality'
-            name='quality'
-            min='0'
-            max='100'
-            value={quality}
-            onChange={handleSlider}
-          />
-          <label htmlFor='quality'>{`Quality -> ${quality}`}</label>
-        </div>
+        <Slider quality={quality} handleSlider={handleSlider} />
       </div>
       <div className='preview-box'>
         <div className='background' />
