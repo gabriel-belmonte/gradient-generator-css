@@ -1,4 +1,5 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import type { JSX } from "preact/jsx-runtime";
+import { useCallback, useRef, useState } from "preact/hooks";
 import { toPng } from "html-to-image";
 import {
   DEFAULT_GRADIENT,
@@ -38,15 +39,18 @@ function App() {
   );
 
   const handleTextArea = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setGradient(sanitizeInput(event.target.value));
+    (event: JSX.TargetedInputEvent<HTMLTextAreaElement>) => {
+      setGradient(sanitizeInput(event.currentTarget.value));
     },
     []
   );
 
-  const handleSlider = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setQuality(event.target.value);
-  }, []);
+  const handleSlider = useCallback(
+    (event: JSX.TargetedInputEvent<HTMLInputElement>) => {
+      setQuality(event.currentTarget.value);
+    },
+    []
+  );
 
   return (
     <div className='container'>

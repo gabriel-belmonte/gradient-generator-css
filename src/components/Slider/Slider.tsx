@@ -1,3 +1,4 @@
+import type { JSX } from "preact/jsx-runtime";
 import styles from "./styles.module.css";
 
 export default function Slider({
@@ -5,7 +6,7 @@ export default function Slider({
   handleSlider,
 }: {
   quality: string;
-  handleSlider: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSlider: (event: JSX.TargetedInputEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div className={styles.slider}>
