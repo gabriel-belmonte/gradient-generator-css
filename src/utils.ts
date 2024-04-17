@@ -1,23 +1,23 @@
-import { Options } from 'html-to-image/lib/types';
-import { ResolutionType } from './types';
+import { Options } from "html-to-image/lib/types";
+import { ResolutionType } from "./types";
 
-export const DEFAULT_QUALITY = '95';
+export const DEFAULT_QUALITY = "95";
 
 export const DEFAULT_GRADIENT =
-  'linear-gradient(0deg, purple 20%, #0000ff03 50%), linear-gradient(180deg, green 20%, red 50%)';
+  "linear-gradient(0deg, rgba(0, 0, 0, .7) 20%, rgba(220, 0, 0, .5) 50%),\nlinear-gradient(180deg, rgba(0, 220, 0, .7) 20%, rgba(0, 0, 0, .5) 50%)";
 
 export const RESOLUTION: ResolutionType = {
-  '1080p': {
+  "1080p": {
     width: 1920,
     height: 1080,
   },
-  '720p': {
+  "720p": {
     width: 1280,
     height: 720,
   },
 };
 
-const sanitizeInput = (value: string) =>  value.replace(';', '');
+export const sanitizeInput = (value: string) => value.replace(";", "");
 
 export const getImageConfig = (
   input: string,
@@ -26,7 +26,7 @@ export const getImageConfig = (
 ): Options => {
   return {
     quality: Number(quality) / 100,
-    style: { background: sanitizeInput(input) },
+    style: { background: input },
     ...RESOLUTION[resMode],
   };
 };

@@ -1,8 +1,13 @@
-import { ChangeEvent, useCallback, useRef, useState } from 'react';
-import { toPng } from 'html-to-image';
-import { DEFAULT_GRADIENT, DEFAULT_QUALITY, getImageConfig } from './utils';
-import type { ResolutionType } from './types';
-import './App.css';
+import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { toPng } from "html-to-image";
+import {
+  DEFAULT_GRADIENT,
+  DEFAULT_QUALITY,
+  getImageConfig,
+  sanitizeInput,
+} from "./utils";
+import type { ResolutionType } from "./types";
+import "./App.css";
 
 function App() {
   const [input, setInput] = useState(DEFAULT_GRADIENT);
@@ -10,7 +15,7 @@ function App() {
 
   const ref = useRef(null);
 
-  const onClick = useCallback(
+  const handleClick = useCallback(
     (resMode: keyof ResolutionType) => {
       if (ref.current === null) {
         return;
@@ -18,8 +23,8 @@ function App() {
 
       toPng(ref.current, getImageConfig(input, resMode, quality))
         .then((dataUrl) => {
-          const link = document.createElement('a');
-          link.download = 'gradient-image.png';
+          const link = document.createElement("a");
+          link.download = "gradient-image.png";
           link.href = dataUrl;
           link.click();
         })
@@ -30,37 +35,45 @@ function App() {
     [ref, input, quality]
   );
 
-  const onInput = useCallback(
+  const handleTextArea = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setInput(event.target.value);
+      setInput(sanitizeInput(event.target.value));
     },
     []
   );
 
-  const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+  const handleSlider = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setQuality(event.target.value);
   }, []);
 
   return (
-    <div className="container">
-      <div className="buttons">
-        <button onClick={() => onClick('1080p')}>DOWNLOAD 1080p</button>
-        <button onClick={() => onClick('720p')}>DOWNLOAD 720p</button>
-        <div className="slider">
+    <div className='container'>
+      <div className='buttons'>
+        <button onClick={() => handleClick("1080p")}>DOWNLOAD 1080p</button>
+        <button onClick={() => handleClick("720p")}>DOWNLOAD 720p</button>
+        <div className='slider'>
           <input
-            type="range"
-            id="quality"
-            name="quality"
-            min="0"
-            max="100"
+            type='range'
+            id='quality'
+            name='quality'
+            min='0'
+            max='100'
             value={quality}
-            onChange={onChange}
+            onChange={handleSlider}
           />
-          <label htmlFor="quality">{`Quality -> ${quality}`}</label>
+          <label htmlFor='quality'>{`Quality -> ${quality}`}</label>
         </div>
       </div>
-      <div className="preview" style={{ background: input }}></div>
-      <textarea className="text" autoFocus onInput={onInput} value={input} />
+      <div className='preview-box'>
+        <div className='background' />
+        <div className='gradient' style={{ background: input }} />
+      </div>
+      <textarea
+        className='text'
+        autoFocus
+        onChange={handleTextArea}
+        value={input}
+      />
       <div ref={ref} />
     </div>
   );
