@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# CSS Gradient Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a CSS gradient generator built with Preact and TypeScript, using Vite for development and building.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Generates gradient images based on user input.
+- Allows the user to adjust the quality of the generated image.
+- Uses the `html-to-image` library to convert the generated gradients into PNG images.
+- Allows the user to download the image gradient into a 1080p or 720p file.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository.
+2. Install the dependencies with `npm install`.
+3. Start the development server with `npm run dev`.
 
-- Configure the top-level `parserOptions` property like this:
+## Scripts
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- `npm run dev`: Starts the Vite development server.
+- `npm run build`: Builds the project for production.
+- `npm run preview`: Serves the production version of the project on a local server.
+- `npm run lint`: Runs the TypeScript linter on the project's code.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Dependencies
+
+- [html-to-image](https://www.npmjs.com/package/html-to-image)
+- [preact](https://www.npmjs.com/package/preact)
+- [typescript](https://www.npmjs.com/package/typescript)
+- [vite](https://www.npmjs.com/package/vite)
+
+## License
+
+This project is open-source and is available under the terms of the license specified by the author.
