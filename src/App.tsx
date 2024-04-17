@@ -8,9 +8,9 @@ import {
   sanitizeInput,
 } from "./utils";
 import type { ResolutionType } from "./types";
-import "./App.css";
 import Slider from "./components/Slider/Slider.tsx";
 import Preview from "./components/Preview/Preview.tsx";
+import styles from "./styles.module.css";
 
 function App() {
   const [gradient, setGradient] = useState(DEFAULT_GRADIENT);
@@ -53,18 +53,20 @@ function App() {
   );
 
   return (
-    <div className='container'>
-      <div className='buttons'>
+    <div className={styles.container}>
+      <div className={styles.buttons}>
         <button onClick={() => handleClick("1080p")}>DOWNLOAD 1080p</button>
         <button onClick={() => handleClick("720p")}>DOWNLOAD 720p</button>
         <Slider quality={quality} handleSlider={handleSlider} />
       </div>
       <Preview gradient={gradient} />
       <textarea
-        className='text'
+        className={styles.text}
         autoFocus
         onInput={handleTextArea}
         value={gradient}
+        spellCheck={false}
+        aria-label='gradient-textarea'
       />
       <div ref={ref} />
     </div>
