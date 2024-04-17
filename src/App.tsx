@@ -63,7 +63,7 @@ function App() {
       <textarea
         className='text'
         autoFocus
-        onChange={handleTextArea}
+        onInput={handleTextArea}
         value={gradient}
       />
       <div ref={ref} />

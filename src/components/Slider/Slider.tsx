@@ -18,7 +18,7 @@ export default function Slider({
         min='0'
         max='100'
         value={quality}
-        onChange={handleSlider}
+        onInput={handleSlider}
       />
       <label htmlFor='quality'>{`${quality}%`}</label>
     </div>
