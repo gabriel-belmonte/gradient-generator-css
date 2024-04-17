@@ -26,7 +26,7 @@ function App() {
       toPng(ref.current, getImageConfig(gradient, resMode, quality))
         .then((dataUrl) => {
           const link = document.createElement("a");
-          link.download = "gradient-image.png";
+          link.download = `gradient-image-${resMode}.png`;
           link.href = dataUrl;
           link.click();
         })
