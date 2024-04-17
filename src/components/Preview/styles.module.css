@@ -1,0 +1,24 @@
+.preview {
+  width: 80vw;
+  height: 60vh;
+  border: 1px white solid;
+  position: relative;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #808080 25%, transparent 25%) 0 0,
+    linear-gradient(45deg, #808080 25%, transparent 25%) 15px 15px,
+    linear-gradient(-45deg, #808080 25%, transparent 25%) 0 0,
+    linear-gradient(-45deg, #808080 25%, transparent 25%) 15px 15px;
+  background-color: #fff;
+  background-size: 30px 30px;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

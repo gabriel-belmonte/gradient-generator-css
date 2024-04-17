@@ -8,10 +8,11 @@ import {
 } from "./utils";
 import type { ResolutionType } from "./types";
 import "./App.css";
-import Slider from "./components/Slider.tsx";
+import Slider from "./components/Slider/Slider.tsx";
+import Preview from "./components/Preview/Preview.tsx";
 
 function App() {
-  const [input, setInput] = useState(DEFAULT_GRADIENT);
+  const [gradient, setGradient] = useState(DEFAULT_GRADIENT);
   const [quality, setQuality] = useState(DEFAULT_QUALITY);
 
   const ref = useRef(null);
@@ -22,7 +23,7 @@ function App() {
         return;
       }
 
-      toPng(ref.current, getImageConfig(input, resMode, quality))
+      toPng(ref.current, getImageConfig(gradient, resMode, quality))
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = "gradient-image.png";
@@ -33,12 +34,12 @@ function App() {
           console.log(err);
         });
     },
-    [ref, input, quality]
+    [ref, gradient, quality]
   );
 
   const handleTextArea = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setInput(sanitizeInput(event.target.value));
+      setGradient(sanitizeInput(event.target.value));
     },
     []
   );
@@ -54,15 +55,12 @@ function App() {
         <button onClick={() => handleClick("720p")}>DOWNLOAD 720p</button>
         <Slider quality={quality} handleSlider={handleSlider} />
       </div>
-      <div className='preview-box'>
-        <div className='background' />
-        <div className='gradient' style={{ background: input }} />
-      </div>
+      <Preview gradient={gradient} />
       <textarea
         className='text'
         autoFocus
         onChange={handleTextArea}
-        value={input}
+        value={gradient}
       />
       <div ref={ref} />
     </div>
