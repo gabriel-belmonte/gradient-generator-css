@@ -17,9 +17,7 @@ export const RESOLUTION: ResolutionType = {
   },
 };
 
-const sanitizeInput = (value: string) => {
-  return value.replace(';', '');
-};
+const sanitizeInput = (value: string) =>  value.replace(';', '');
 
 export const getImageConfig = (
   input: string,
