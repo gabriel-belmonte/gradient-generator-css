@@ -15,7 +15,6 @@ export default function useGradient() {
 
   const resetGradient = () => {
     setStateGradient(DEFAULT_GRADIENT);
-    console.log("🚀 ~ resetGradient ~ resetGradient:");
   };
 
   const gradientToClipboard = useCallback(() => {
