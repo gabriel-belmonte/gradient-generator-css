@@ -10,11 +10,12 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "html-to-image": "^1.11.11",
+    "dom-to-image-more": "^3.3.0",
     "preact": "^10.20.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.8.2",
+    "@types/dom-to-image": "^2.6.7",
     "typescript": "^5.4.5",
     "vite": "^5.2.9"
   },

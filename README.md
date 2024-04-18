@@ -6,7 +6,7 @@ This project is a CSS gradient generator built with Preact and TypeScript, using
 
 - Generates gradient images based on user input.
 - Allows the user to adjust the quality of the generated image.
-- Uses the `html-to-image` library to convert the generated gradients into PNG images.
+- Uses the `dom-to-image-more` library to convert the generated gradients into PNG images.
 - Allows the user to download the image gradient into a 1080p or 720p file.
 
 ## Getting Started
@@ -24,7 +24,7 @@ This project is a CSS gradient generator built with Preact and TypeScript, using
 
 ## Dependencies
 
-- [html-to-image](https://www.npmjs.com/package/html-to-image)
+- [dom-to-image-more](https://www.npmjs.com/package/dom-to-image-more)
 - [preact](https://www.npmjs.com/package/preact)
 - [typescript](https://www.npmjs.com/package/typescript)
 - [vite](https://www.npmjs.com/package/vite)
