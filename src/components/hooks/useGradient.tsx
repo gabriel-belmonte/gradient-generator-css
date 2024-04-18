@@ -21,6 +21,8 @@ export default function useGradient() {
     const url = new URL(window.location.href);
     url.searchParams.append(GRADIENT_PARAM_ID, gradient);
     navigator.clipboard.writeText(url.toString());
+
+    window.alert("Gradient URL copied to clipboard!");
   }, [gradient]);
 
   useEffect(() => {
