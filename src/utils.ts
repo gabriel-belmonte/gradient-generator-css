@@ -1,5 +1,7 @@
 import { ResolutionType } from "./types";
 
+export const GRADIENT_PARAM_ID = "gradient";
+
 export const DEFAULT_GRADIENT =
   "linear-gradient(0deg, rgba(0, 0, 0, .7) 20%, rgba(220, 0, 0, .5) 50%),\nlinear-gradient(180deg, rgba(0, 220, 0, .7) 20%, rgba(0, 0, 0, .5) 50%)";
 
@@ -28,4 +30,9 @@ export const getImageConfig = (
     style: { background: input },
     ...RESOLUTION[resMode],
   };
+};
+
+export const getGradientFromUrl = (): string | null => {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(GRADIENT_PARAM_ID);
 };

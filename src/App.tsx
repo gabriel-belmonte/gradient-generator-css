@@ -1,15 +1,17 @@
 import domtoimage from "dom-to-image-more";
 import type { JSX } from "preact/jsx-runtime";
-import { useCallback, useRef, useState } from "preact/hooks";
+import { useCallback, useRef } from "preact/hooks";
 import type { ResolutionType } from "./types";
-import { DEFAULT_GRADIENT, getImageConfig, sanitizeInput } from "./utils";
+import { getImageConfig } from "./utils";
 import Preview from "./components/Preview/Preview.tsx";
 import TextArea from "./components/TextArea/TextArea.tsx";
 import Buttons from "./components/Buttons/Buttons.tsx";
 import styles from "./styles.module.css";
+import useGradient from "./components/hooks/useGradient.tsx";
 
 function App() {
-  const [gradient, setGradient] = useState(DEFAULT_GRADIENT);
+  const { gradient, setGradient, resetGradient, gradientToClipboard } =
+    useGradient();
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,14 +38,18 @@ function App() {
 
   const handleTextArea = useCallback(
     (event: JSX.TargetedInputEvent<HTMLTextAreaElement>) => {
-      setGradient(sanitizeInput(event.currentTarget.value));
+      setGradient(event.currentTarget.value);
     },
     []
   );
 
   return (
     <div className={styles.container}>
-      <Buttons handleClick={handleClick} />
+      <Buttons
+        handleClick={handleClick}
+        resetGradient={resetGradient}
+        gradientToClipboard={gradientToClipboard}
+      />
       <Preview gradient={gradient} />
       <TextArea gradient={gradient} handleTextArea={handleTextArea} />
       <div ref={ref} />
